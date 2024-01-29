@@ -10,32 +10,50 @@
 ## Installation of this project
 <!-- npm i and composer i -->
 Step 1 : Clone this project
+```
 git clone git@github.com:YoussefJemmane/SchoolManagement.git
+```
 
 Step 2 : Go to the project directory
+```
 cd SchoolManagement
+```
 
 Step 3 : Install the dependencies
+```
 composer install
 npm install
+```
 
 Step 4 : Copy the .env from .env.example
+```
 cp .env.example .env 
+```
 
 Step 5 : Generate the application key
+```
 php artisan key:generate
+```
 
 Step 6 : Run the database migrations
+```
 php artisan migrate
+```
 
 Step 7 : Run the database seeders
+```
 php artisan db:seed AdminSeeder
+```
 
 Step 8 : Link the storage directory
+```
 php artisan storage:link
+```
 
 Step 9 : Run the application
+```
 npm run start
+```
 
 ## About Laravel
 

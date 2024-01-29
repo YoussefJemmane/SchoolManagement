@@ -73,13 +73,15 @@ class LibraryController extends Controller
             'type' => ['required', 'string', 'max:255'],
             'image' => ['required', 'image'],
         ]);
+        $imagePath = $request->file('image')->store('', 'public');
+
 
         $library->update([
             'type' => $request->type,
-            'image' => $request->image,
+            'image' => $imagePath,
         ]);
 
-        return redirect()->route('libraries.index');
+        return redirect()->route('library.index');
     }
 
     /**
@@ -88,6 +90,6 @@ class LibraryController extends Controller
     public function destroy(Library $library)
     {
         $library->delete();
-        return redirect()->route('libraries.index');
+        return redirect()->route('library.index');
     }
 }

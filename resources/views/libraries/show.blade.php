@@ -7,13 +7,14 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            @if(Auth::user()->role == 'Admin')
             <div class="flex justify-end pb-[20px]">
                 <a href="{{ route('book.create',$library->id) }}" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
                     Ajouter un Book
                 </a>
 
             </div>
-
+            @endif
             <div class="grid w-full grid-cols-3 gap-4 overflow-x-auto">
                 @foreach ($books as $book)
                 <div class="col">
@@ -32,6 +33,7 @@
                                     <p class="text-sm text-slate-400">Publisher: {{ $book->publisher }}</p>
                                     <p class="text-sm text-slate-400">Description: {{ $book->description }}</p>
                                     <p class="text-sm text-slate-400">created at {{ $book->created_at }}</p>
+                                    @if(Auth::user()->role == 'Admin')
                                     <div class="flex justify-end gap-4 pt-4">
                                         <a href="{{ route('book.edit', [$book->id,$library->id]) }}" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green">
                                             Edit
@@ -44,6 +46,7 @@
                                             </button>
                                         </form>
                                     </div>
+                                    @endif
                                 </header>
 
                             </div>

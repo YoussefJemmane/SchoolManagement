@@ -12,6 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    @if(Auth::user()->role == 'Admin')
                     <x-nav-link :href="route('student.index')" :active="request()->routeIs('student.index')">
                         {{ __('List des Etudiants') }}
                     </x-nav-link>
@@ -21,8 +22,9 @@
                     <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                         {{ __('List des Directeurs') }}
                     </x-nav-link>
+                    @endif
 
-                    <x-nav-link :href="route('library.index')" :active="request()->routeIs('admin.index')">
+                    <x-nav-link :href="route('library.index')" :active="request()->routeIs('library.index')">
                         {{ __('List des Bibliothèques') }}
                     </x-nav-link>
 
@@ -35,7 +37,7 @@
                     <x-slot name="trigger">
                         <div class="flex ">
 
-                            <div  class="mr-[10px] mt-[10px]">{{ Auth::user()->name }}</div>
+                            <div class="mr-[10px] mt-[10px]">{{ Auth::user()->name }}</div>
                             <button class="relative inline-flex items-center justify-center w-10 h-10 text-lg text-white rounded-full bg-emerald-500">
 
                                 <img class="rounded-full" src="{{ asset('storage/' . Auth::user()->image) }}" alt="{{ Auth::user()->name }}" />
@@ -76,6 +78,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            @if(Auth::user()->role == 'Admin')
             <x-responsive-nav-link :href="route('student.index')" :active="request()->routeIs('student.index')">
                 {{ __('List des Etudiants') }}
             </x-responsive-nav-link>
@@ -85,6 +88,7 @@
             <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                 {{ __('List des Directeurs') }}
             </x-responsive-nav-link>
+            @endif
             <x-responsive-nav-link :href="route('library.index')" :active="request()->routeIs('library.index')">
                 {{ __('List des Bibliothèques') }}
             </x-responsive-nav-link>

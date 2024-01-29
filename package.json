@@ -4,8 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "start": "concurrently \"npm run dev \" \"php artisan serve \"",
-        "push" : "concurrently \"npm i \" \"composer i \" \"php artisan migrate \" \"php artisan storage:link \" \"php artisan db:seed AdminSeeder \""
+        "start": "concurrently \"npm run dev \" \"php artisan serve \""
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
